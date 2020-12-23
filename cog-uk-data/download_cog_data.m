@@ -2,7 +2,7 @@ function download_cog_data()
 
 %% Download data
 disp('Downloading COVID-19 data from COG UK website');
-websave('output/cog_data.csv', 'https://cog-uk.s3.climb.ac.uk/phylogenetics/latest/cog_all.fasta');
+websave('output/cog_all.fasta', 'https://cog-uk.s3.climb.ac.uk/phylogenetics/latest/cog_all.fasta');
 disp('Download completed!');
 
 disp('Downloading COVID-19 metadata from COG UK website');
@@ -10,8 +10,8 @@ websave('output/cog_metadata.csv', 'https://cog-uk.s3.climb.ac.uk/phylogenetics/
 disp('Download completed!');
     
 %% Load data
-data_only = fastaread('data/cog_all.fasta');
-data = readtable('data/cog_metadata.csv', 'HeaderLines', 1);
+data_only = fastaread('output/cog_all.fasta');
+data = readtable('output/cog_metadata.csv', 'HeaderLines', 1);
 
 %% Bundle data
 data.Properties.VariableNames{'Var1'} = 'header';
