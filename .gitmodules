@@ -1,0 +1,3 @@
+[submodule "covid-genome-matlab-parser"]
+	path = covid-genome-matlab-parser
+	url = git@github.com:enzodesena/covid-genome-matlab-parser.git
