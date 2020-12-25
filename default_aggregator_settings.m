@@ -14,5 +14,9 @@ aggregator_settings.directories = {'covid-genome-matlab-parser/dataset/', 'cog-u
 % If set as true, this will ignore sequences that are not complete.
 aggregator_settings.ignore_sequence_if_incomplete = true;
 
-
+% Only consider the fist accession in a period of time given by the
+% following value. 
 aggregator_settings.only_use_one_accession_per_number_of_days = 1;
+
+% Output directory
+aggregator_settings.output_directory = 'dataset/';
