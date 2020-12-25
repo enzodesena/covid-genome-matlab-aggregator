@@ -9,7 +9,7 @@
 function aggregator_settings = default_aggregator_settings()
 aggregator_settings = struct;
 
-aggregator_settings.directories = {'cog-uk-data/dataset/', 'covid-genome-matlab-parser/dataset/'};
+aggregator_settings.directories = {'covid-genome-matlab-parser/dataset/', 'cog-uk-data/dataset/'}; % 
 
 % If set as true, this will ignore sequences that are not complete.
 aggregator_settings.ignore_sequence_if_incomplete = true;
