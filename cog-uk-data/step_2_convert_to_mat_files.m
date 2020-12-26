@@ -1,8 +1,8 @@
 function step_2_convert_to_mat_files
 
 %% Load data
-sequences = fastaread('output/cog_all.fasta');
-metadata = readtable('output/cog_metadata.csv', 'HeaderLines', 1);
+sequences = fastaread('dataset/cog_all.fasta');
+metadata = readtable('dataset/cog_metadata.csv', 'HeaderLines', 1);
 
 %% Fix table headers
 metadata.Properties.VariableNames{'Var1'} = 'header';
@@ -39,7 +39,7 @@ for n=1:N
     sequence = sequences(n).Sequence;
     lineage = metadata.lineage{n};
     
-    filename = strcat('dataset/', strrep(strcat(accession, '.mat'), '/','-'));
+    filename = strcat('mat-files/', strrep(strcat(accession, '.mat'), '/','-'));
     if ~isfile(filename)
         save(filename, 'accession', 'collection_date', 'locality', 'sequence', 'lineage');
         disp(strcat('Saved accession:', filename));
