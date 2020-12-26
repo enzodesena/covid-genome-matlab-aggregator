@@ -25,7 +25,7 @@ In order to avoid repetition of operations that are costly either in terms of co
 * **step_2_bundle_datasets** - This script reads the dataset folders and returns a struct array containing all the datasets. The datasets are returned in chronological order according to the collection data. If you only want to use the data that is already contained in this repository, this is the only step you need to run.
 
 
-If you use step 2 to access the data, everything will be indexed accordingly. So, for instance, the genomic sequence of the first measurement is `datasets(1).genebank_entry.Sequence`.
+If you use step 2 to access the data, everything will be indexed accordingly. So, for instance, the genomic sequence of the first measurement is `datasets(1).sequence`.
 
 ## Contributing
 

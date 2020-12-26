@@ -9,7 +9,7 @@
 function aggregator_settings = default_aggregator_settings()
 aggregator_settings = struct;
 
-aggregator_settings.directories = {'covid-genome-matlab-parser/dataset/', 'cog-uk-data/dataset/'}; % 
+aggregator_settings.directories = {'gisaid-data/mat-files/', 'covid-genome-matlab-parser/mat-files/', 'cog-uk-data/mat-files/'}; % 
 
 % If set as true, this will ignore sequences that are not complete.
 aggregator_settings.ignore_sequence_if_incomplete = true;
@@ -19,4 +19,4 @@ aggregator_settings.ignore_sequence_if_incomplete = true;
 aggregator_settings.only_use_one_accession_per_number_of_days = 1;
 
 % Output directory
-aggregator_settings.output_directory = 'dataset/';
+aggregator_settings.output_directory = 'mat-files/';

@@ -55,8 +55,8 @@ for n=1:length(datasets)
     pruned_datasets = [pruned_datasets; datasets(n)];
     pruned_collection_dates = [pruned_collection_dates; datasets(n).collection_date];
 end
-
-save (strcat(aggregator_settings.output_directory, 'datasets.mat'), 'pruned_datasets');
+datasets = pruned_datasets;
+save (strcat(aggregator_settings.output_directory, 'datasets.mat'), 'datasets');
 
 
 function [datasets, collection_dates] = bundle_dataset_in_directory(directory_name, settings)
@@ -85,7 +85,6 @@ for n=1:num_files
     end
     
     assert(isfield(dataset, 'collection_date'));
-    
     
     if ~isfield(dataset, 'lineage') 
         dataset.lineage = '';
