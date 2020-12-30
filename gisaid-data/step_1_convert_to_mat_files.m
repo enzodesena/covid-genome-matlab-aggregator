@@ -1,18 +1,10 @@
 function step_1_convert_to_mat_files
 
 %% Load data
-% data = fastaread('output/cog_all.fasta');
-% metadata = readtable('output/cog_metadata.csv', 'HeaderLines', 1);
-
-% gisaid_hcov-19_2020_12_25_21_Cluster-5.fasta
-% gisaid_hcov-19_2020_12_25_23_5012V2_1.fasta
-% gisaid_hcov-19_2020_12_25_23_5012V2_2.fasta
-% gisaid_hcov-19_2020_12_25_23_5012V2_3.fasta
-% gisaid_hcov-19_2020_12_25_23_5012V2_4.fasta
-
 dataset_directory = 'data/';
 convert_fasta_to_mat(strcat(dataset_directory, 'gisaid_hcov-19_2020_12_25_21_Cluster-5.fasta'), 'Cluster-5');
-convert_fasta_to_mat(strcat(dataset_directory, 'gisaid_hcov-19_2020_12_26_10_501V2.fasta'), '501.V2');
+convert_fasta_to_mat(strcat(dataset_directory, 'gisaid_hcov-19_2020_12_27_12-501V2.fasta'), '501.V2');
+convert_fasta_to_mat(strcat(dataset_directory, 'gisaid_hcov-19_2020_12_27_12-B117.fasta'), 'B.1.1.7');
 
 
 %% 
@@ -33,6 +25,12 @@ for n=1:N
     locality = accession_parts(2);
     locality = locality{1};
     
+    if strcmp(accession, 'EPI_ISL_735511')
+        locality = 'Italy, Rome';
+    elseif strcmp(accession, 'EPI_ISL_736784')
+        locality = 'Italy, Naples';
+    end
+        
     if strcmp(locality, 'mink')
         locality = accession_parts(3);
         locality = locality{1};
@@ -40,7 +38,14 @@ for n=1:N
     end
     
 	collection_date = header_parts(3);
-    collection_date = datetime(collection_date{1});
+    collection_date = collection_date{1};
+    try 
+        collection_date = datetime(collection_date);
+    catch
+        disp(strcat('Accession n.',accession,' was ignored because collection date is incomplete: ', collection_date)); 
+        continue;
+    end
+    
 	sequence = data(n).Sequence;
 
 	filename = strcat('mat-files/', strrep(strcat(accession, '.mat'), '/','-'));
